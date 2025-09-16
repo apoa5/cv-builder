@@ -1,0 +1,18 @@
+.template {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    width: calc(210px * 2);
+    min-height: calc(297px * 2);
+    margin: auto;
+    padding: 20px;
+}
+
+.preview-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.template-general-info {
+    text-align: center;
+}
