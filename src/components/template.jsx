@@ -9,7 +9,22 @@ function Template({ userInput }) {
                 <div className='template-general-info'>
                     <h3>{userInput.fullName}</h3>
                     <p>{userInput.email} | {userInput.phoneNumber}</p>
-                    <hr />
+                </div>
+                <hr />
+                <div className='template-education'>
+                    <h3>Educational Experience</h3>
+                    <p>{userInput.schoolName}</p>
+                    <p>{userInput.titleOfStudy}</p>
+                    <p>{userInput.dateOfStudy}</p>
+                </div>
+                <hr />
+                <div className='template-practical'>
+                    <h3>Practical Experience</h3>
+                    <p>{userInput.companyName}</p>
+                    <p>{userInput.positionTitle}</p>
+                    <p>{userInput.mainResponsibilities}</p>
+                    <p>{userInput.dateOfEmployment}</p>
+
                 </div>
             </div>
         </div>
