@@ -1,18 +1,42 @@
+import {useState} from 'react';
 import '../styles/App.css'
 
-function Form({userInput, setUserInput}){
+function Form({setUserInput}){
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    schoolName: '',
+    titleOfStudy: '',
+    dateOfStudy: '',
+    companyName: '',
+    positionTitle: '',
+    mainResponsibilities: '',
+    dateOfEmployment: '',
+  })
+
   const handleChange = (e) => {
     const {name, value} = e.target;
-    setUserInput({
-      ...userInput,
+    setFormData({
+      ...formData,
       [name]: value,
     });
   }
-  console.log(userInput);
+
+  const handleSubmit = (fields) => {
+    setUserInput(prev => ({
+      ...prev,
+      ...fields,
+    }))
+  }
+
+  console.log(formData);
 
     return(
         <div className='user-input'>
-        <form>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+        }}>
           <div className='input-group'>
             <h2>General Information</h2>
             <label>
@@ -20,7 +44,7 @@ function Form({userInput, setUserInput}){
             <input type='text'
               name='fullName'
               placeholder='Full Name'
-              value={userInput.fullName}
+              value={formData.fullName}
               onChange={handleChange}>
             </input>
             </label>
@@ -29,7 +53,7 @@ function Form({userInput, setUserInput}){
               <input type='email'
               name='email'
               placeholder='abc@defmail.com'
-              value={userInput.email}
+              value={formData.email}
               onChange={handleChange}>
               </input>
             </label>
@@ -38,10 +62,17 @@ function Form({userInput, setUserInput}){
               <input type='tel'
               name='phoneNumber'
               placeholder='+123456789'
-              value={userInput.phoneNumber}
+              value={formData.phoneNumber}
               onChange={handleChange}>
               </input>
             </label>
+            <button type="button" onClick={() => handleSubmit({
+            fullName: formData.fullName,
+            email: formData.email,
+            phoneNumber: formData.phoneNumber,
+          })}>
+            Save Info
+          </button>
           </div>
           <div className='input-group'>
             <h2>Educational experience</h2>
@@ -49,7 +80,7 @@ function Form({userInput, setUserInput}){
               School name:
               <input type='text'
               name='schoolName'
-              value={userInput.schoolName}
+              value={formData.schoolName}
               onChange={handleChange}>
               </input>
             </label>
@@ -57,7 +88,7 @@ function Form({userInput, setUserInput}){
               Title of study:
               <input type='text'
               name='titleOfStudy'
-              value={userInput.titleOfStudy}
+              value={formData.titleOfStudy}
               onChange={handleChange}>
               </input>
             </label>
@@ -66,19 +97,25 @@ function Form({userInput, setUserInput}){
               <input type='text'
               name='dateOfStudy'
               placeholder='MM/YYYY - MM/YYYY'
-              value={userInput.dateOfStudy}
+              value={formData.dateOfStudy}
               onChange={handleChange}>
               </input>
             </label>
+            <button type='button' onClick={() => handleSubmit({
+              schoolName: formData.schoolName,
+              titleOfStudy: formData.titleOfStudy,
+              dateOfStudy: formData.dateOfStudy,
+            })}>
+              Save Info
+            </button>
           </div>
           <div className='input-group'>
-            value={userInput.mainResponsibilities}
             <h2>Practical experience</h2>
             <label>
               Company name:
               <input type='text'
               name='companyName'
-              value={userInput.companyName}
+              value={formData.companyName}
               onChange={handleChange}>
               </input>
             </label>
@@ -86,7 +123,7 @@ function Form({userInput, setUserInput}){
               Position title:
               <input type='text'
               name='positionTitle'
-              value={userInput.positionTitle}
+              value={formData.positionTitle}
               onChange={handleChange}>
               </input>
             </label>
@@ -94,7 +131,7 @@ function Form({userInput, setUserInput}){
               Main responsibilities:
               <input type='text'
               name='mainResponsibilities'
-              value={userInput.mainResponsibilities}
+              value={formData.mainResponsibilities}
               onChange={handleChange}>
               </input>
             </label>
@@ -103,10 +140,18 @@ function Form({userInput, setUserInput}){
               <input type='text'
               name='dateOfEmployment'
               placeholder='MM/YYYY - MM/YYYY'
-              value={userInput.dateOfEmployment}
+              value={formData.dateOfEmployment}
               onChange={handleChange}>
               </input>
             </label>
+            <button type='button' onClick={() => handleSubmit({
+              companyName: formData.companyName,
+              positionTitle: formData.positionTitle,
+              mainResponsibilities: formData.mainResponsibilities,
+              dateOfEmployment: formData.dateOfEmployment,
+            })}>
+              Save Info
+            </button>
 
           </div>
         </form>
